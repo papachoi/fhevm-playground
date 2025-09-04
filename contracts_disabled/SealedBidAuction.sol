@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "./fhevm/lib/FHE.sol";
+import "fhevm/lib/TFHE.sol";
 
 /**
  * @title SealedBidAuction (stub demo)
@@ -26,8 +26,8 @@ contract SealedBidAuction {
         bids[msg.sender] = amount;
 
         // if amount > highest: update highest and winner
-        ebool isGreater = FHE.gt(amount, highest);
-        highest = FHE.select(isGreater, amount, highest);
+        ebool isGreater = TFHE.gt(amount, highest);
+        highest = TFHE.cmux(isGreater, amount, highest);
         if (ebool.unwrap(isGreater)) {
             winner = msg.sender;
         }
