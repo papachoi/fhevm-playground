@@ -1,22 +1,20 @@
 # fhevm-playground
 
-Tiny experiments around **FHEVM** concepts. Start simple; iterate daily.
+Small demos exploring confidential smart-contract patterns with Zama's TFHE library.
+- Contracts: arithmetic pipelines, encrypted max, TFHE-native voting & auction (compile-only)
+- Tooling: Hardhat + Node 22, GitHub Actions CI, Prettier
 
-## Today
-- [x] Init repo
-- [x] Add minimal Solidity contract (placeholder)
-- [ ] Write day1 notes in `notes/day1.md`
+## Dev
+```bash
+npm ci
+npx hardhat compile
+npx hardhat test
+Networks
+Localhost: npx hardhat node (then deploy scripts)
 
-## Idea
-- Start with a standard counter contract
-- Later: evolve into a confidential pattern (e.g., select-based guard)
-## Structure
-fhevm-playground/
-├─ contracts/
-│ └─ Counter.sol
-├─ notes/
-│ └─ day1.md
-├─ .github/
-│ └─ workflows/
-│ └─ ci.yml
-└─ README.md
+Sepolia (optional): set SEPOLIA_RPC_URL and PRIVATE_KEY in .env
+
+Scripts
+npm run format / npm run checkfmt
+
+npx hardhat run scripts/deploy_confidential_voting_tfhe.js --network localhost

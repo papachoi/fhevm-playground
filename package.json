@@ -4,7 +4,9 @@
   "description": "Tiny experiments around **FHEVM** concepts. Start simple; iterate daily.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"**/*.{js,ts,sol,md}\"",
+    "checkfmt": "prettier --check \"**/*.{js,ts,sol,md}\""
   },
   "repository": {
     "type": "git",
@@ -21,7 +23,9 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^6.1.0",
     "@types/node": "^24.3.0",
+    "dotenv": "^17.2.2",
     "hardhat": "^2.26.3",
+    "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
