@@ -1,5 +1,8 @@
 # fhevm-playground
 
+[![CI](https://github.com/papachoi/fhevm-playground/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/papachoi/fhevm-playground/actions/workflows/ci.yml) [![Security](https://github.com/papachoi/fhevm-playground/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/papachoi/fhevm-playground/actions/workflows/security.yml)
+
+
 Small demos exploring confidential smart-contract patterns with Zama's TFHE library.
 - Contracts: arithmetic pipelines, encrypted max, TFHE-native voting & auction (compile-only)
 - Tooling: Hardhat + Node 22, GitHub Actions CI, Prettier

@@ -4,10 +4,14 @@
   "description": "Tiny experiments around **FHEVM** concepts. Start simple; iterate daily.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx hardhat test",
     "format": "prettier --write \"**/*.{js,ts,sol,md}\"",
     "checkfmt": "prettier --check \"**/*.{js,ts,sol,md}\"",
-    "fetch:pubkey": "node scripts/fetch_pubkey.js"
+    "fetch:pubkey": "node scripts/fetch_pubkey.js",
+    "node": "npx hardhat node",
+    "compile": "npx hardhat compile",
+    "deploy:voting:local": "npx hardhat run scripts/deploy_confidential_voting_tfhe.js --network localhost",
+    "vote:mock": "CONTRACT= MODE=MOCK npx hardhat run scripts/vote_encrypt_client.js --network localhost"
   },
   "repository": {
     "type": "git",

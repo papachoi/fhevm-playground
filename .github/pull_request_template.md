@@ -1,9 +1,12 @@
 ## Summary
-What does this change?
+What does this PR do?
+
+## Changes
+- 
 
 ## Testing
-How did you test it?
+- [ ] `npm run compile`
+- [ ] `npm run test`
 
-## Checklist
-- [ ] CI passes
-- [ ] Updated docs if needed
+## Notes
+Screenshots, links, or context.
