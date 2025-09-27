@@ -1,0 +1,2 @@
+Pyfhel==3.5
+numpy<2
