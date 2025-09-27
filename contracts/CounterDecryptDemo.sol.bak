@@ -1,0 +1,61 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+// Minimal interface to your Day-26 counter
+interface IConfidentialCounter {
+    function getCounterHandle() external view returns (bytes32);
+}
+
+// Minimal interface to our mock oracle
+interface IDecryptionOracle {
+    function requestDecryption(
+        bytes32[] calldata handles,
+        address target,
+        bytes4 callbackSelector
+    ) external returns (uint256 requestId);
+}
+
+contract CounterDecryptDemo {
+    IConfidentialCounter public counter;
+    IDecryptionOracle public oracle;
+
+    // Last decrypted value stored for demo/verification
+    uint64 public lastDecrypted;
+
+    event DecryptRequested(uint256 requestId, bytes32 handle);
+    event DecryptFulfilled(uint256 requestId, uint64 plaintext);
+
+    constructor(address counterAddr) {
+        counter = IConfidentialCounter(counterAddr);
+    }
+
+    function setDecryptionOracle(address oracleAddr) external {
+        oracle = IDecryptionOracle(oracleAddr);
+    }
+
+    /// Request decryption of the counter's encrypted handle.
+    function requestCounterDecryption() external returns (uint256) {
+        bytes32;
+        handles[0] = counter.getCounterHandle();
+
+        uint256 reqId = oracle.requestDecryption(
+            handles,
+            address(this),
+            this.onDecryptedUint64.selector
+        );
+
+        emit DecryptRequested(reqId, handles[0]);
+        return reqId;
+    }
+
+    /// Oracle callback (mock skips signature checks)
+    function onDecryptedUint64(
+        uint256 requestId,
+        uint64 plaintext,
+        bytes[] calldata /*signatures*/
+    ) external {
+        require(msg.sender == address(oracle), "not oracle");
+        lastDecrypted = plaintext;
+        emit DecryptFulfilled(requestId, plaintext);
+    }
+}

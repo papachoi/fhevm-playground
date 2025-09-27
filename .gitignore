@@ -11,3 +11,4 @@ artifacts/
 # Env
 .env
 .env.*
+FHEVM_React_Template/
