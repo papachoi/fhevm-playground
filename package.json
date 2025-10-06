@@ -34,7 +34,7 @@
     "hardhat": "^2.26.3",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "fhevm": "^0.6.2"
